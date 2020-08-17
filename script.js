@@ -30,6 +30,7 @@ function getResults(searchValue) {
     </div>`;
 
         parent.innerHTML += result;
+        if (i == 9) result = null;
     }
 }
 
