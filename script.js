@@ -11,12 +11,15 @@ searchButton.addEventListener('click', function() {
 function getResults(searchValue) {
     let parent = document.getElementById('parent');
 
+    let result = null;
+    let answer = null;
+
     for (let i = 0; i < 10; i++) {
         let title = searchValue.data[i].title;
         let artist = searchValue.data[i].artist.name;
         let image = searchValue.data[i].artist.picture_small;
 
-        let result = `<div class="single-result row align-items-center my-3 p-3">
+        result = `<div class="single-result row align-items-center my-3 p-3">
         <div class="col-md-8">
             <h3 class="lyrics-name" id="title">${title}</h3>
             <p class="author lead">Album by <span id="artistName">${artist}</span></p>
@@ -29,9 +32,10 @@ function getResults(searchValue) {
         </div>
     </div>`;
 
-        parent.innerHTML += result;
-        if (i == 9) result = null;
+        answer += result;
     }
+
+    parent.innerHTML = answer;
 }
 
 function getArtist(artist, title) {
