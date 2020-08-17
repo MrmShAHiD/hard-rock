@@ -1,13 +1,4 @@
-const searchButton = document.getElementById('searchButton');
-
-searchButton.addEventListener('click', function() {
-    const searchBoxArea = document.getElementById('searchBoxArea').value;
-
-    fetch(`https://api.lyrics.ovh/suggest/${searchBoxArea}/`)
-        .then(response => response.json())
-        .then(data => getResults(data));
-})
-
+// Get results 
 function getResults(searchValue) {
     let parent = document.getElementById('parent');
 
@@ -38,6 +29,8 @@ function getResults(searchValue) {
     parent.innerHTML = answer;
 }
 
+
+// Get Artist Name and song title
 function getArtist(artist, title) {
     fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
         .then(response => response.json())
@@ -52,3 +45,17 @@ function showLyrics(song, title) {
     }
     document.getElementById('songTitle').innerText = title;
 }
+
+
+
+// Active Search Button 
+
+const searchButton = document.getElementById('searchButton');
+
+searchButton.addEventListener('click', function() {
+    const searchBoxArea = document.getElementById('searchBoxArea').value;
+
+    fetch(`https://api.lyrics.ovh/suggest/${searchBoxArea}/`)
+        .then(response => response.json())
+        .then(data => getResults(data));
+})
